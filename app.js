@@ -5,6 +5,7 @@ const cols = 5;
 const buttonInfo = [];
 const middleC = 261.626;
 const harmonicSeriesStart = 4;
+var audioIsReady = false;
 
 function getPitch(r, c) {
     var pitch = middleC;
@@ -64,10 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // You can now access buttons with buttonGrid[row][col], e.g., buttonGrid[0][0] for the first button
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", async () => {
+            if (audioIsReady) {
+                return;
+            }
+
+            await Tone.start();
+            console.log("audio is ready");
+            audioIsReady = true;
+        });
+    }
 });
 
-//attach a click listener to a play button
-document.querySelector("button")?.addEventListener("click", async () => {
-	await Tone.start();
-	console.log("audio is ready");
-});
