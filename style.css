@@ -47,5 +47,6 @@ button span {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* https://stackoverflow.com/questions/10614481/disable-double-tap-zoom-option-in-browser-on-touch-devices */
     touch-action: manipulation;
 }
