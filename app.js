@@ -1,4 +1,4 @@
-const synth = new Tone.Synth().toDestination();
+var synth = null;
 
 const rows = 5;
 const cols = 5;
@@ -27,7 +27,6 @@ function buttonClick(r, c) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    synth.context.resume();
     const grid = document.getElementById('grid');
     const buttons = [];
 
@@ -48,10 +47,22 @@ document.addEventListener('DOMContentLoaded', () => {
         var colorScale = 0.25 + (pitch / getPitch(rows, cols)) * 0.5;
         
         button.style.backgroundColor = `rgb(${red * colorScale}, ${green * colorScale}, ${blue * colorScale})`;
-        button.onclick = function() {
+
+        buttons[i].addEventListener("click", async () => {
+            if (audioIsReady) {
+                return;
+            }
+
+            await Tone.start();
+            console.log("audio is ready");
+            audioIsReady = true;
+            synth = new Tone.Synth().toDestination();
+        });
+
+        button.addEventListener("click", function() {
             //buttonClick(Math.floor(i / rows), i % cols);
             buttonClick(rows - Math.floor(i / rows) - 1, i % cols);
-        }
+        })
     }
 
     // Store buttons in a 2D array
@@ -65,16 +76,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // You can now access buttons with buttonGrid[row][col], e.g., buttonGrid[0][0] for the first button
-    for (var i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", async () => {
-            if (audioIsReady) {
-                return;
-            }
-
-            await Tone.start();
-            console.log("audio is ready");
-            audioIsReady = true;
-        });
-    }
 });
 
