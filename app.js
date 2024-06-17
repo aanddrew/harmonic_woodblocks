@@ -65,3 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // You can now access buttons with buttonGrid[row][col], e.g., buttonGrid[0][0] for the first button
 });
+
+//attach a click listener to a play button
+document.querySelector("button")?.addEventListener("click", async () => {
+	await Tone.start();
+	console.log("audio is ready");
+});
