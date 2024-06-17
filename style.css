@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+#app {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    /* max-width: 500px; */
+}
+
+button {
+    width: 18%;
+    margin: 1%;
+    padding-top: 18%; /* Makes the button a square */
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
