@@ -26,6 +26,7 @@ function buttonClick(r, c) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    synth.context.resume();
     const grid = document.getElementById('grid');
     const buttons = [];
 
