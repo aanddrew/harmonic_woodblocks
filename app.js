@@ -23,7 +23,9 @@ function getPitch(r, c) {
 function buttonClick(r, c) {
     var pitch = getPitch(r, c);
     console.log(r, c, pitch);
-    synth.triggerAttackRelease(pitch, "8n");
+    if (synth != null) {
+        synth.triggerAttackRelease(pitch, "8n");
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
