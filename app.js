@@ -21,11 +21,7 @@ function getPitch(r, c) {
 }
 
 function buttonClick(r, c) {
-    var pitch = getPitch(r, c);
-    console.log(r, c, pitch);
-    if (synth != null) {
-        synth.triggerAttackRelease(pitch, "8n");
-    }
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -63,7 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         button.addEventListener("click", function() {
             //buttonClick(Math.floor(i / rows), i % cols);
-            buttonClick(rows - Math.floor(i / rows) - 1, i % cols);
+            // buttonClick(rows - Math.floor(i / rows) - 1, i % cols);
+            var pitch = getPitch(rows - Math.floor(i / rows) - 1, i % cols);
+            console.log(pitch);
+            if (synth != null) {
+                synth.triggerAttackRelease(pitch, "8n");
+            }
         })
     }
 
