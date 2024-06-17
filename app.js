@@ -51,6 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // I hate you ios
+            // https://www.audjust.com/blog/unmute-web-audio-on-ios
+            // unblock playback when iOS is set to silent
+            const audio = document.createElement("audio");
+            audio.setAttribute("x-webkit-airplay", "deny");
+            audio.preload = "auto";
+            audio.loop = true;
+            audio.src = "silent.mp3";
+            audio.play();
+
+
             await Tone.start();
             console.log("audio is ready");
             audioIsReady = true;
