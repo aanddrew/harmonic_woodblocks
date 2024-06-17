@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.appendChild(button);
         buttons.push(button);
 
-        var r = Math.floor(i / rows);
+        var r = rows - Math.floor(i / rows) - 1;
         var c = i % cols;
         var pitch = getPitch(r, c);
 
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.style.backgroundColor = `rgb(${red * colorScale}, ${green * colorScale}, ${blue * colorScale})`;
         button.onclick = function() {
             //buttonClick(Math.floor(i / rows), i % cols);
-            buttonClick(Math.floor(i / rows), i % cols);
+            buttonClick(rows - Math.floor(i / rows) - 1, i % cols);
         }
     }
 
